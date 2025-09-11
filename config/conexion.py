@@ -28,8 +28,3 @@ def connect_db():
             return f'Error conexion a la base de datos {e}'
     
 
-root=connect_root()
-base=connect_db()
-
-print(root)
-print(base)

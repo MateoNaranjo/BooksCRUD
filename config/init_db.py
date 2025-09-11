@@ -27,25 +27,3 @@ def create_table():
         except Exception as e:
             return f"error creando tabla {e}"
         
-def view_base():
-        try:
-            connRT=connect_root()
-            if connRT is None:
-                return 'Error: conexión fallida'
-            cur=connRT.cursor()
-            cur.execute("SHOW DATABASES")
-            databases = cur.fetchall()
-            connRT.close()
-            print(" Bases de datos disponibles:")
-            for db in databases:
-                print(f" - {db[0]}")
-        except Exception as e:
-            return f"error mostrando bases {e}"
-        
-db=create_database()
-table=create_table()
-#base=view_base()
-
-print(db)
-print(table)
-#print(base)
