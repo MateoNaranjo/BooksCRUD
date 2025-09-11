@@ -23,7 +23,7 @@ books_list=[
     
 ]
 
-def insert_book(book):
+def insert_books(book):
     try:
         conn=connect_db()
         if conn is None:
@@ -52,6 +52,6 @@ def view_books():
         return f'Error mostrando libros {e}'
     
     
-print(insert_book(books_list[0]))
+print(insert_books(books_list[0]))
 print(view_books())
 
