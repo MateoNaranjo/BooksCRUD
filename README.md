@@ -57,9 +57,7 @@ psycopg2 / sqlite3 (según la base de datos que uses)
 Instala las dependencias:
 
 
-bash
-pip install -r requirements.txt
-Ejecuta la aplicación:
+
 
 bash
 python main.py
