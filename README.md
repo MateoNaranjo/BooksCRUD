@@ -1,69 +1,26 @@
-📚 BooksCRUDAPI
-Este proyecto es una API RESTful desarrollada en Python usando Flask, diseñada para gestionar libros. La arquitectura está basada en el patrón MVC, separando claramente los controladores, servicios y repositorios. Los datos se almacenan en una base de datos relacional, lo que permite persistencia entre ejecuciones.
+Trabajo de libreria
+Este trabajo es tiene la funcion de crear una api, la cual cumpla la función de agregar, colocar, actualizar, y eliminar libros en una libreria. Para este trabajo se utilizo el lenguaje Python y herraminetas como Flask y SQLAlchemy para crear y utilizar la base de datos y sus relaciones.
 
-🗂️ Estructura del Proyecto
-main.py: Punto de entrada de la aplicación Flask. Registra los blueprints y lanza el servidor.
+Descripción General
 
-controllers/books_controllers.py: Define los endpoints HTTP relacionados con libros.
+El sistema permite agregar, consultar, actualizar y eliminar libros,autores y el año de publicacion, en caso de que existan ediciones especiales, de una libreria y sus libros . La estructura de trabajo que se implemento fue todo basado en una base de datos creada con la herramienta SQLAlquemy para relacionar las tablas. 
+Características principales:
+API de gestion de libros en una libreria.
+Modelos bien definidos y documentados.
+Uso de la rama development para la elaboracion de la logica y funciones.
 
-services/book_services.py: Contiene la lógica de negocio y validación.
+Estructura del Proyecto
+models/: Estructura de la tabla libros.
+repositories/: Creacion de funciones que se van a usar para aplicar los comandos: GET,POST,PUT;DELETE.
+controllers/:Rutas y Aplicacin de las funciones.
+database.py/:Creacion de la base de datos local que se usa en caso de tener errores de conexion
+services/: Logica de que datos se van a ver modificados cuando se usen los comandos
 
-repositories/books_repository.py: Interactúa directamente con la base de datos.
+Autenticacion:
+En el registro, se valida que el correo no exista y se guarda el usuario con la contraseña cifrada.
 
-models/books.py: Define la clase Books que representa la estructura de los datos.
-
-requirements.txt: Lista de dependencias necesarias para ejecutar el proyecto.
-
-🔗 Endpoints disponibles
-Método	Endpoint	Descripción
-GET	/books	Obtiene la lista de todos los libros.
-GET	/books/<id>	Obtiene la información de un libro por su ID.
-POST	/books	Crea un nuevo libro. Requiere JSON con title, author, year.
-PUT	/books/<id>	Actualiza los datos de un libro existente.
-DELETE	/books/<id>	Elimina un libro por su ID.
-🧪 Ejemplos de uso con curl
-Obtener todos los libros:
-
-bash
-curl -i http://localhost:5000/books
-Obtener un libro por ID:
-
-bash
-curl -i http://localhost:5000/books/11
-Crear un nuevo libro:
-
-bash
-curl -i -X POST http://localhost:5000/books \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Cien años de soledad", "author": "Gabriel García Márquez", "year": 1967}'
-Actualizar un libro existente:
-
-bash
-curl -i -X PUT http://localhost:5000/books/11 \
-  -H "Content-Type: application/json" \
-  -d '{"title": "El amor en los tiempos del cólera", "author": "Gabriel García Márquez", "year": 1985}'
-Eliminar un libro:
-
-bash
-curl -i -X DELETE http://localhost:5000/books/11
-⚙️ Requisitos
-Python 3.12+
-
-Flask
-
-psycopg2 / sqlite3 (según la base de datos que uses)
-
-🚀 Instalación y ejecución
-Instala las dependencias:
+En el login, se verifica la contraseña y se genera un token firmado con una clave secreta (JWT_SECRET).
 
 
-
-
-bash
-python main.py
-📝 Notas
-Los datos se almacenan en una base de datos relacional, por lo que persisten entre ejecuciones.
-
-Los endpoints devuelven respuestas en formato JSON y utilizan códigos de estado HTTP apropiados.
-
-Puedes extender el proyecto para incluir validaciones, autenticación, paginación o documentación automática con Swagger.
+ ROLES:
+ La gestión de roles se implementó utilizando un sistema de autenticación basado en JWT. Al momento de iniciar sesión, el usuario recibe un token que incluye información sobre su rol (por ejemplo, administrador o usuario estándar). Este rol se almacena en la base de datos y se verifica en cada petición protegida, permitiendo o restringiendo el acceso a ciertas rutas o funcionalidades según el tipo de usuario.
